@@ -8,6 +8,14 @@ class SemverComparison {
     this.patch = patch
   }
 
+  isEqualTo (semver) {
+    if (typeof semver === 'string') {
+      semver = new SemverComparison(semver)
+    }
+
+    return (`${this.major}.${this.minor}.${this.patch}` === `${semver.major}.${semver.minor}.${semver.patch}`)
+  }
+
   isNewerThan (semver) {
     if (typeof semver === 'string') {
       semver = new SemverComparison(semver)
@@ -26,6 +34,10 @@ class SemverComparison {
     }
 
     return false
+  }
+
+  isNewerThanOrEqualTo (semver) {
+    return this.isNewerThan(semver) || this.isEqualTo(semver)
   }
 }
 

@@ -1,5 +1,5 @@
 # SemverComparison
-Compare Semantic Versioning strings to see which version is newer.
+Compare semantic versioning strings.
 
 ## Install
 ```bash
@@ -12,7 +12,15 @@ import SemverComparison from '@krisell/semver-comparison'
 
 let requiredVersion = new SemverComparison('2.1.3')
 if (requiredVersion.isNewerThan(versionRunning)) {
-  // Take action
+  // The current version is too old
+}
+
+if (someVersion.isEqualTo(versionRunning)) {
+  // Exaclty the same version
+}
+
+if (someVersion.isNewerThanOrEqualTo(versionRunning)) {
+  // The union of the two above
 }
 ```
 
