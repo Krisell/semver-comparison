@@ -1,1 +1,86 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=void 0;function _slicedToArray(a,b){return _arrayWithHoles(a)||_iterableToArrayLimit(a,b)||_unsupportedIterableToArray(a,b)||_nonIterableRest()}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _unsupportedIterableToArray(a,b){if(a){if("string"==typeof a)return _arrayLikeToArray(a,b);var c=Object.prototype.toString.call(a).slice(8,-1);return"Object"===c&&a.constructor&&(c=a.constructor.name),"Map"===c||"Set"===c?Array.from(a):"Arguments"===c||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(c)?_arrayLikeToArray(a,b):void 0}}function _arrayLikeToArray(a,b){(null==b||b>a.length)&&(b=a.length);for(var c=0,d=Array(b);c<b;c++)d[c]=a[c];return d}function _iterableToArrayLimit(a,b){var c=a&&("undefined"!=typeof Symbol&&a[Symbol.iterator]||a["@@iterator"]);if(null!=c){var d,e,f=[],g=!0,h=!1;try{for(c=c.call(a);!(g=(d=c.next()).done)&&(f.push(d.value),!(b&&f.length===b));g=!0);}catch(a){h=!0,e=a}finally{try{g||null==c["return"]||c["return"]()}finally{if(h)throw e}}return f}}function _arrayWithHoles(a){if(Array.isArray(a))return a}function _classCallCheck(a,b){if(!(a instanceof b))throw new TypeError("Cannot call a class as a function")}function _defineProperties(a,b){for(var c,d=0;d<b.length;d++)c=b[d],c.enumerable=c.enumerable||!1,c.configurable=!0,"value"in c&&(c.writable=!0),Object.defineProperty(a,c.key,c)}function _createClass(a,b,c){return b&&_defineProperties(a.prototype,b),c&&_defineProperties(a,c),a}var SemverComparison=function(){function a(b){_classCallCheck(this,a),this.versionString=b;var c=b.split(".").map(function(a){return+a}),d=_slicedToArray(c,3),e=d[0],f=d[1],g=d[2];this.major=e,this.minor=f,this.patch=g}return _createClass(a,[{key:"isEqualTo",value:function isEqualTo(b){return"string"==typeof b&&(b=new a(b)),"".concat(this.major,".").concat(this.minor,".").concat(this.patch)==="".concat(b.major,".").concat(b.minor,".").concat(b.patch)}},{key:"isNewerThan",value:function isNewerThan(b){return"string"==typeof b&&(b=new a(b)),!!(this.major>b.major)||!!(this.major===b.major&&this.minor>b.minor)||!!(this.major===b.major&&this.minor===b.minor&&this.patch>b.patch)}},{key:"isNewerThanOrEqualTo",value:function isNewerThanOrEqualTo(a){return this.isNewerThan(a)||this.isEqualTo(a)}}]),a}(),_default=SemverComparison;exports["default"]=_default;
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var SemverComparison = /*#__PURE__*/function () {
+  function SemverComparison(versionString) {
+    _classCallCheck(this, SemverComparison);
+
+    this.versionString = versionString;
+
+    var _versionString$split$ = versionString.split('.').map(function (el) {
+      return +el;
+    }),
+        _versionString$split$2 = _slicedToArray(_versionString$split$, 3),
+        major = _versionString$split$2[0],
+        minor = _versionString$split$2[1],
+        patch = _versionString$split$2[2];
+
+    this.major = major;
+    this.minor = minor;
+    this.patch = patch;
+  }
+
+  _createClass(SemverComparison, [{
+    key: "isEqualTo",
+    value: function isEqualTo(semver) {
+      if (typeof semver === 'string') {
+        semver = new SemverComparison(semver);
+      }
+
+      return "".concat(this.major, ".").concat(this.minor, ".").concat(this.patch) === "".concat(semver.major, ".").concat(semver.minor, ".").concat(semver.patch);
+    }
+  }, {
+    key: "isNewerThan",
+    value: function isNewerThan(semver) {
+      if (typeof semver === 'string') {
+        semver = new SemverComparison(semver);
+      }
+
+      if (this.major > semver.major) {
+        return true;
+      }
+
+      if (this.major === semver.major && this.minor > semver.minor) {
+        return true;
+      }
+
+      if (this.major === semver.major && this.minor === semver.minor && this.patch > semver.patch) {
+        return true;
+      }
+
+      return false;
+    }
+  }, {
+    key: "isNewerThanOrEqualTo",
+    value: function isNewerThanOrEqualTo(semver) {
+      return this.isNewerThan(semver) || this.isEqualTo(semver);
+    }
+  }]);
+
+  return SemverComparison;
+}();
+
+var _default = SemverComparison;
+exports["default"] = _default;
